@@ -42,7 +42,7 @@ int main() {
 }
 
 // хотим вызывать функцию от метода
-void Test (int test) const {
+void Test (int test) const { //что означает? объект не будет менять поля
     std::cout << "Child" << Name << " participates in test " << test << "\n";
 }
 // хотим создавать объект сразу с инициилизацией
@@ -73,4 +73,21 @@ Child(
     std::cout << "A new object was born!\n";
 }
 
-//efdf
+// сделаем двух учеников, чтобы лучше разобраться с блоками кода и жизнью обектов
+
+int main() {
+    Child a("Petya", "Gerasimov", 5.0);
+    a.Test(2);
+    Child b("Vasya", "Gerasimov", 5.0);
+    b.Test(3);
+}
+
+// локальные переменные хранятся на стэке -> умрет тот, кого создали позже
+
+// как сделать, чтобы Петр уничтожился позже?
+
+vector<Student> students = {{("Petya", "Gerasimov", 5.0}, {"Vasya", "Gerasimov", 5.0}};
+
+for (const auto& i : students) {
+    i.Test(4);
+}
